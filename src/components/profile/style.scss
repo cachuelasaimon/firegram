@@ -1,0 +1,122 @@
+.container {
+    margin-top: 4rem;
+    div {
+        width: 100%;
+        height: auto;        
+        font-family: "Kanit", sans-serif;
+    }
+    .title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: rgb(78, 78, 78);
+        font-weight: 400;
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+    }
+    
+    .upload-btn {
+        margin: 0 auto;
+        height: 2rem;
+        width: 2rem;
+        border: 1px solid #FEAEA5;
+        color: #FEAEA5;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 1rem;
+
+        &::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        &::before {
+            margin: 0 0.55rem;            
+            content: "+";
+        }
+
+        &:hover {
+            background-color: #FEAEA5;
+            color: white;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+    
+    .error {
+        color: #F79384;
+    }
+}
+
+.pictures {
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 25vw;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+    @media (max-width: 1250px) {
+        grid-auto-rows: 30vw;
+    }
+
+    .picture {
+        width: 100%;
+        opacity: 0.8;
+        overflow: hidden;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+        
+        img {
+            min-width: 100%;
+            min-height: 100%;
+            max-width: 150%;
+        }
+    }   
+}
+.file-name {
+}
+.progress-bar {
+    text-align: left;
+    padding-left: 1rem;
+    height: 3px;
+    background-color: #F5928D;
+    font-size: 1rem;
+    color: white;
+    transition: all 0.5s ease-in-out;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+.spacer {
+    height: 3px;
+    margin-bottom: 6.76rem;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+
+    img {
+       display: block;
+       max-width: 60%;
+       max-height: 80%;
+       margin: 6.5rem auto;
+       box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
+       border-radius: 7px;
+    }
+}
