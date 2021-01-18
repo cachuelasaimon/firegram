@@ -21,7 +21,7 @@ export default function Nav (props) {
     return (
         <div className="navigation">
             <div className="nav-container">
-                <div className="logo" onClick={()=>{history.push('/')}}>
+                <div className="logo" onClick={()=>{history.push('/firegram')}}>
                     Firegram
                 </div>
                 <div className="links">

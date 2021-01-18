@@ -85,7 +85,7 @@ export default function LoginForm ( props ) {
 
     useEffect(()=>{
         if(currentUser) {
-            history.push('/')
+            history.push('/firegram')
         }
     },[currentUser])
 

@@ -83,7 +83,7 @@ export default function SignInForm ( props ) {
 
     useEffect(()=>{
         if(currentUser) {
-            history.push('/')
+            history.push('/firegram')
         }
     },[currentUser])
 

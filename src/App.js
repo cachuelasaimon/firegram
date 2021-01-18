@@ -14,7 +14,7 @@ function App() {
 return (
       <div className="App">      
         <Switch>
-          <Route exact path='/' render={()=>( <MainLayout>
+          <Route exact path='/firegram' render={()=>( <MainLayout>
             <Profile /> </MainLayout> )} />
           <Route exact path='/login' render={()=>( <MainLayout>
             <Login /> </MainLayout> )} />
