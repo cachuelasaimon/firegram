@@ -23,7 +23,7 @@ export default function ImageGrid (props) {
         <div className ="pictures">
             {picture && picture.length === pictureList.length && picture.map((link, i)=> (
                     <motion.div  
-                        key={link.id}          
+                        key={i}          
                         className="picture"
                         onClick={()=>setSelectedImg(link)}
                     >

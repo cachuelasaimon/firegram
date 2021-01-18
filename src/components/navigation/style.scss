@@ -11,7 +11,7 @@
     z-index: 4;
     
     .nav-container {
-        max-width: 1250px;
+        max-width: 1024px;
         margin: 0 auto;
         height: 100%;
     }
@@ -32,12 +32,24 @@
         a {
             color: rgb(126, 126, 126);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             margin: 0 1rem 0 0; 
             transition: all 0.3s ease-in-out;
         }
         a:hover {
+            color: darken(rgb(85, 84, 84), 25%);
+        }
+        span {
+            color: rgb(126, 126, 126);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0 1rem 0 0; 
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        span:hover {
             color: darken(rgb(85, 84, 84), 25%);
         }
     }

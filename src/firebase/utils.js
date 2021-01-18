@@ -20,31 +20,41 @@ const GoogleAPI = new firebase.auth.GoogleAuthProvider()
 GoogleAPI.setCustomParameters({ prompt: 'select_account' })
 export const signInWithGoogle = () => auth.signInWithPopup(GoogleAPI)
 
-//handleProfile 
-export const handleProfile = async (userAuth, additionalData) =>{
-    if (!userAuth) { return }
-    // take UID from userAuth (Google Sign In credentials)
-    const { uid } = userAuth
-    const userRef = firestore.doc(`users/${uid}`)
-    // Check if user exists on firestore DB
-    const user = await userRef.get()
-    if (!user.exists) {
-        // if user doesn't exist create one using Google Sign In Data
-        const { displayName, email } = userAuth
-        const timestamp = new Date()
-
-        try { 
-            // Create user 
-            userRef.set({
-                displayName,
-                email,
-                createdAt: timestamp,
-                ...additionalData,
-            })
-        } catch (err) { console.log(err) }
+// Store / Query User Data
+export const handleProfile = async ({userAuth, additionalData}) => {
+    if(!userAuth) { return } else {
+        // Take uid from userAuth (Google sign-in)
+        const { uid } = userAuth
+        const userRef = firestore.doc(`users/${uid}`)
+        // Check if user exists
+        const user = await userRef.get()
+        if(!user.exists) {
+            // if user doesn't exist yet, create one using userAuth information
+            const { displayName, email } = userAuth
+            const timestamp = new Date()
+            try {
+                // Create User
+                userRef.set({
+                    displayName,
+                    email,
+                    createdAt: timestamp,
+                    ...additionalData,
+                })
+            } catch (err) { console.log(err) }
+        } return userRef
     }
-    return userRef
 }
+
+// User Session Check
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged( user => {
+            unsubscribe()
+            resolve(user)
+        }, reject)
+    })
+}
+
 
 // Storage 
 export const StoreImg = (file) => {
