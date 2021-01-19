@@ -83,12 +83,16 @@ export default function SignInForm ( props ) {
 
     useEffect(()=>{
         if(currentUser) {
-            history.push('/firegram')
+            props.setPage('/firegram')
         }
     },[currentUser])
+    useEffect(() => {
+        if(currentUser){
+            props.setPage('/firegram')
+        }
+    },[])
 
     const handleSubmit = ({email, password, displayName}) => {
-        console.log({email, displayName})
         dispatch(signUpStart({email, password, displayName}))
     }
 
@@ -120,8 +124,10 @@ export default function SignInForm ( props ) {
                             .oneOf([Yup.ref('password')], "passwords don't match")
                             .required('Required'),          
                     })}
-                    onSubmit={ async(values) => {
+                    onSubmit={ async(values, {resetForm}) => {
                             await handleSubmit(values)
+                            resetForm()
+                            console.log(props)
                         }}
                 >
                     {props=>(

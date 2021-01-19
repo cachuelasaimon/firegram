@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Image from './image'
 import { motion } from 'framer-motion'
 import { useFirestore } from '../../hooks'
+//Redux
+import { useSelector } from 'react-redux'  
+const mapState = ({user}) => ({
+    currentUser: user.currentUser
+})
 
 export default function ImageGrid (props) {
+    const { currentUser } = useSelector(mapState)
     const { setSelectedImg } = props
-    const { pictureList } = useFirestore('pictures')
     const [picture, setPicture] = useState(null)
+    const [collection, setCollection] = useState(`pictures`)
+    const { pictureList } = useFirestore(collection)    
 
     useEffect(()=>{
        let list = []
@@ -18,10 +25,17 @@ export default function ImageGrid (props) {
        }
       
     },[pictureList])
+    useEffect(() => {
+        if(currentUser) {
+            setCollection(`users/${currentUser.id}/pictures`)
+        } else {
+            setCollection(`pictures`)
+        }
+    },[currentUser])
 
     return (
         <div className ="pictures">
-            {picture && picture.length === pictureList.length && picture.map((link, i)=> (
+            {currentUser && picture && picture.length === pictureList.length && picture.map((link, i)=> (
                     <motion.div  
                         key={i}          
                         className="picture"

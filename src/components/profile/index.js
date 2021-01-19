@@ -2,8 +2,14 @@ import React, { Fragment, useState, useEffect } from 'react'
 import ProgressBar from './progressBar'
 import ImageGrid from './imageGrid'
 import './style.scss'
+// Redux 
+import { useSelector } from 'react-redux'
+const mapState = ({user}) => ({
+    currentUser: user.currentUser,
+})
 
 export default function Profile (props) {
+    const { currentUser } = useSelector(mapState)
     const { setSelectedImg } = props
     const [file, setFile] = useState(null)
     const [error, setError] = useState(null)
@@ -31,14 +37,14 @@ export default function Profile (props) {
         <Fragment>
             <div className="container">
                 <div className="title">
-                        Your Pictures
+                       {currentUser ? `Your Pictures ${currentUser.displayName}` : `Please login to upload pictures`}
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                    <input 
+                   {currentUser && <input 
                         className="upload-btn" 
                         type="file" 
                         onChange={uploadImg} 
-                        />
+                        />}
                     {error && 
                         <p className="error">{error}</p>}
                     {file && <Fragment>

@@ -85,9 +85,14 @@ export default function LoginForm ( props ) {
 
     useEffect(()=>{
         if(currentUser) {
-            history.push('/firegram')
+            props.setPage('/firegram')
         }
     },[currentUser])
+    useEffect(() => {
+        if(currentUser){
+            props.setPage('/firegram')
+        }
+    },[])
 
     return (
         <Fragment>
@@ -108,8 +113,8 @@ export default function LoginForm ( props ) {
                             .required('Required'),     
                     })}
                     onSubmit={async (values, {resetForm})=>{
-                       await handleSubmit(values) 
-                       resetForm()
+                       await handleSubmit(values)
+                       resetForm()                      
                     }}
                 >
                     {props=>(

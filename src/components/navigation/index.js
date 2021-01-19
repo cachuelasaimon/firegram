@@ -9,10 +9,15 @@ const mapState = ({user}) => ({
     currentUser: user.currentUser
 })
 
-export default function Nav (props) { 
+export default function Nav (props) {
+    const { setPage } = props 
     const history = useHistory()
     const dispatch = useDispatch()
     const { currentUser } = useSelector(mapState)
+
+    const handleClick =async(page) => {
+       await setPage(page)
+    }
 
     useEffect(()=>{
        dispatch(checkUserSession())
@@ -21,19 +26,19 @@ export default function Nav (props) {
     return (
         <div className="navigation">
             <div className="nav-container">
-                <div className="logo" onClick={()=>{history.push('/firegram')}}>
+                <div className="logo" onClick={()=>setPage('/firegram')}>
                     Firegram
                 </div>
                 <div className="links">
                    { !currentUser && (
                     <Fragment>
-                        <a href="/login">Login</a>
-                        <a href="/sign-up">SignUp</a>
+                        <span onClick={()=>setPage('/login')}>Login</span>
+                        <span onClick={()=>setPage('/sign-up')} >SignUp</span>
                     </Fragment>
                    )}
                    {currentUser && (
                     <Fragment>
-                      <a href="#">{currentUser.displayName}</a>
+                      <span onClick={()=>console.log('profile-page')} >{currentUser.displayName}</span>
                       <span onClick={()=>dispatch(logout())}>Logout</span>
                     </Fragment>
                    )}

@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react'
 import {useStorage} from '../../hooks'
+// Redux
+import { useSelector } from 'react-redux'
+const mapState = ({user}) => ({
+    currentUser: user.currentUser,
+})
 
 const ProgressBar = ({ file, setFile}) => {
-   const { progress, url } = useStorage(file)
+    const { currentUser } = useSelector(mapState)
+   const { progress, url } = useStorage(file, currentUser.id)
 
     useEffect(async()=>{
         // set File to null when upload finishes
@@ -11,6 +17,9 @@ const ProgressBar = ({ file, setFile}) => {
             await setFile(null)
         }
     },[url])
+    useEffect(()=>{
+        console.log(currentUser)
+    },[])
 
     useEffect (()=>{console.log(file)},[file])
 

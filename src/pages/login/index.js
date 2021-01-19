@@ -4,6 +4,6 @@ import LoginForm from '../../components/loginForm'
 export default function Login (props) {
 
     return (
-        <LoginForm />
+        <LoginForm {...props}/>
     )
 } 

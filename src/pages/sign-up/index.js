@@ -5,7 +5,7 @@ export default function SignUp (props) {
 
     return (
         <div>
-            <SignUnForm />
+            <SignUnForm {...props} />
         </div>
     )
 }

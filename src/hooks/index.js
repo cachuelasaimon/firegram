@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { firestore, storage } from '../firebase/utils'
 
-export const useStorage = (file) => {
+export const useStorage = (file, uid) => {
     const [progress, setProgress] = useState(0)
     const [error, setError] = useState(null)
     const [url, setUrl] = useState(null)
@@ -10,6 +10,7 @@ export const useStorage = (file) => {
         // Set Refs 
         const storageRef = storage.ref(file.name)
         const collectionRef = firestore.collection('pictures')
+        const userCollectionRef = firestore.collection(`users/${uid}/pictures`)
 
         // Put File in Storage
         storageRef.put(file).on('state_changed',(snap)=>{
@@ -20,7 +21,8 @@ export const useStorage = (file) => {
             // Get URl 
             let url = await storageRef.getDownloadURL()
             let timestamp = new Date()
-            collectionRef.add({ url, createdAt: timestamp, name: file.name, })
+            collectionRef.add({ url, createdAt: timestamp, name: file.name, poster: uid })
+            userCollectionRef.add({url, createdAt: timestamp, name: file.name, })
             setUrl(url)
         })
     },[file])
