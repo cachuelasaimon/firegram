@@ -30,7 +30,7 @@ export function* onEmailSignIn () {
 export function* createUser ({ payload: {email, password, displayName} }) {
     try {
         const { user } = yield auth.createUserWithEmailAndPassword(email, password)
-        yield getUserDataFromFirestoreDB(user)
+        yield getUserDataFromFirestoreDB(user, {displayName})
     } catch (err) { console.log(err) }
 }
 export function* onSignUp () {
