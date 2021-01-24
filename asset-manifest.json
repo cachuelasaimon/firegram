@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/firegram/static/css/main.a4d961fc.chunk.css",
-    "main.js": "/firegram/static/js/main.0eab38b1.chunk.js",
-    "main.js.map": "/firegram/static/js/main.0eab38b1.chunk.js.map",
+    "main.css": "/firegram/static/css/main.9ebbbf90.chunk.css",
+    "main.js": "/firegram/static/js/main.c3be27b0.chunk.js",
+    "main.js.map": "/firegram/static/js/main.c3be27b0.chunk.js.map",
     "runtime-main.js": "/firegram/static/js/runtime-main.44b07236.js",
     "runtime-main.js.map": "/firegram/static/js/runtime-main.44b07236.js.map",
-    "static/js/2.a368cbc1.chunk.js": "/firegram/static/js/2.a368cbc1.chunk.js",
-    "static/js/2.a368cbc1.chunk.js.map": "/firegram/static/js/2.a368cbc1.chunk.js.map",
+    "static/js/2.d49e3191.chunk.js": "/firegram/static/js/2.d49e3191.chunk.js",
+    "static/js/2.d49e3191.chunk.js.map": "/firegram/static/js/2.d49e3191.chunk.js.map",
     "static/js/3.a417b1f3.chunk.js": "/firegram/static/js/3.a417b1f3.chunk.js",
     "static/js/3.a417b1f3.chunk.js.map": "/firegram/static/js/3.a417b1f3.chunk.js.map",
     "index.html": "/firegram/index.html",
-    "static/css/main.a4d961fc.chunk.css.map": "/firegram/static/css/main.a4d961fc.chunk.css.map",
-    "static/js/2.a368cbc1.chunk.js.LICENSE.txt": "/firegram/static/js/2.a368cbc1.chunk.js.LICENSE.txt"
+    "static/css/main.9ebbbf90.chunk.css.map": "/firegram/static/css/main.9ebbbf90.chunk.css.map",
+    "static/js/2.d49e3191.chunk.js.LICENSE.txt": "/firegram/static/js/2.d49e3191.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.44b07236.js",
-    "static/js/2.a368cbc1.chunk.js",
-    "static/css/main.a4d961fc.chunk.css",
-    "static/js/main.0eab38b1.chunk.js"
+    "static/js/2.d49e3191.chunk.js",
+    "static/css/main.9ebbbf90.chunk.css",
+    "static/js/main.c3be27b0.chunk.js"
   ]
 }
